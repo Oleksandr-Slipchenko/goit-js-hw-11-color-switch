@@ -17,17 +17,14 @@ const refs = {
 
 refs.startBtn.addEventListener('click', onStartChangeColors);
 
-
 function onStartChangeColors() {
   refs.bodyHtml.style.backgroundColor = randomIntegerFromInterval(minIndex, maxIndex);
 }
 
 const arrayIndex = colors.map((color, index) => index);
 
-
 const minIndex = Math.min.apply(null, arrayIndex);
 const maxIndex = Math.max.apply(null, arrayIndex);
-
 
 const randomIntegerFromInterval = (min, max) => {
   return colors[Math.floor(Math.random() * (max - min + 1) + min)];
