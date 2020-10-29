@@ -23,7 +23,7 @@ class Changer {
   }
 
   start() {
-    refs.startBtn.disabled = 'true';
+    refs.startBtn.disabled = true;
     this.intervalId = setInterval(() => {
       console.log('start'); // чтобы видеть работу кнопки
       const min = 0;
@@ -34,7 +34,7 @@ class Changer {
 
   stop() {
     clearInterval(this.intervalId);
-    refs.startBtn.disabled = 'false';
+    refs.startBtn.disabled = false;
     // refs.bodyHtml.style.backgroundColor = '';
     console.log('stop'); // чтобы видеть работу кнопки
   }
