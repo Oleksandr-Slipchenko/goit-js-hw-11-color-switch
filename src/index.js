@@ -11,11 +11,6 @@ const colors = [
 
 // Рандомный выбор цвета
 
-const arrayIndex = colors.map((color, index) => index);
-
-const minIndex = Math.min.apply(null, arrayIndex);
-const maxIndex = Math.max.apply(null, arrayIndex);
-
 const randomIntegerFromInterval = (min, max) => {
   return colors[Math.floor(Math.random() * (max - min + 1) + min)];
 };
@@ -34,7 +29,7 @@ const backgroundChanger = {
 
     this.intervalId = setInterval(() => {
       console.log('start'); // чтобы видеть работу кнопки
-      refs.bodyHtml.style.backgroundColor = randomIntegerFromInterval(minIndex, maxIndex)
+      refs.bodyHtml.style.backgroundColor = randomIntegerFromInterval(0, colors.length - 1)
     }, 1000);
   },
 
