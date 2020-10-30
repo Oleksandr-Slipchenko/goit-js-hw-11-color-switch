@@ -18,14 +18,15 @@ const randomIntegerFromInterval = (min, max) => {
 // // Работа кнопок Start, Stop
 
 class Changer {
-  constructor() {
-  this.intervalId = null;
+  constructor({ colors, refs }) {
+    this.refs = refs;
+    this.colors = colors;
+    this.intervalId = null;
   }
 
   start() {
     refs.startBtn.disabled = true;
     this.intervalId = setInterval(() => {
-      console.log('start'); // чтобы видеть работу кнопки
       const min = 0;
       const max = colors.length - 1;
       refs.bodyHtml.style.backgroundColor = randomIntegerFromInterval(min, max)
@@ -35,13 +36,10 @@ class Changer {
   stop() {
     clearInterval(this.intervalId);
     refs.startBtn.disabled = false;
-    // refs.bodyHtml.style.backgroundColor = '';
-    console.log('stop'); // чтобы видеть работу кнопки
   }
 };
 
 const changer = new Changer({
-
 })
 
 const refs = {
@@ -50,32 +48,5 @@ const refs = {
   bodyHtml: document.querySelector('body'),
 }
 
-refs.startBtn.addEventListener('click', changer.start);
-refs.stopBtn.addEventListener('click', changer.stop);
-
-
-// Черновик
-
-// const backgroundChanger = {
-//   intervalId: null,
-//   isActive: false,
-//   start() {
-//     if (this.isActive) {
-//       return;
-//     }
-
-//     this.isActive = true;
-
-//     this.intervalId = setInterval(() => {
-//       console.log('start'); // чтобы видеть работу кнопки
-//       const min = 0;
-//       const max = colors.length - 1;
-//       refs.bodyHtml.style.backgroundColor = randomIntegerFromInterval(min, max)
-//     }, 1000);
-//   },
-
-//   stop() {
-//     console.log('stop'); // чтобы видеть работу кнопки
-//     clearInterval(this.intervalId);
-//   },
-// };
+refs.startBtn.addEventListener('click', () => changer.start());
+refs.stopBtn.addEventListener('click', () => changer.stop());
